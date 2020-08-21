@@ -26,7 +26,7 @@ $(document).ready(function () {
                 $('#result').val(result.result)
             
         })
-    },15000)
+    },120000)
     })
 
 
