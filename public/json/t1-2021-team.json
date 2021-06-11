@@ -1,0 +1,21 @@
+{
+  "team": [{
+    "name":"Eric Kao",
+    "img":"images/Eric.png",
+    "linkedin":"https://www.linkedin.com/in/chien-cheng-kao-b6b55615a",
+    "position":"Full Stack"
+  },
+  {
+    "name":"Keenan",
+    "img":"images/Keenan.jpg",
+    "linkedin":"https://au.linkedin.com/in/keenan-rembold-carey",
+    "position":"Front-end"
+  },
+  {
+    "name":"Pawan Kumar",
+    "img":"images/Pawan.jpg",
+    "linkedin":"https://www.linkedin.com/in/pawan-kumar-ba8abb167",
+    "position":"Front-end"
+  }
+  ]
+}

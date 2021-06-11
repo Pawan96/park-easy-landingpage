@@ -1,41 +1,264 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Park Easy</title>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
+    <!-- Latest Bootstrap min CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link rel="stylesheet" href="assets/css/animate.min.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <script src="env.js"></script>
+    <!-- latest fonts awesome -->
+    <link rel="stylesheet" href="assets/font/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <script src="env.js"></script>
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="assets/css/animate.min.css" type="text/css">
+    <!--  baguetteBox -->
+    <link rel="stylesheet" href="assets/css/baguetteBox.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://p.trellocdn.com/embed.min.js"></script>
+    <script>
+		var teamFile = "./json/t1-2021-team.json";
+		var teamDOM = "";
+    	$(document).ready(function(){
+        $.getJSON(teamFile,function(data){
+            console.log("Team-members :"+data.team);
+
+            $.each(data.team,function(count,item){
+                if( item.img.match(/\.(jpe?g|png|gif)$/) ) {
+
+                    teamDOM = teamDOM + '<div class="col-md-3"><div class="team-post"><img src='+ item.img +'><ul class="team-social"><li><a class="linkedin" target="_blank" href='+item.linkedin+'><i class="fa fa-linkedin"></i></a></li></ul><div class="team-content"><h2>'+item.name+'</h2><span>'+item.position+'</span></div></div></div>';
+                    if(count%3 == 0 && count >= 10){
+                        teamDOM = '<div class="container"><div class="row">'+teamDOM+'</div></div>';
+                         $('#team-section').append(teamDOM);
+                        teamDOM = '';
+                    }
+                    if(((data.team.length-1) == count) && teamDOM.length > 0){
+                     teamDOM = '<div class="container"><div class="row">'+teamDOM+'</div></div>';
+                      $('#team-section').append(teamDOM);
+                        teamDOM = '';
+                    }
+                }
+            });
+        });
+
+	});
+	</script>
 </head>
 
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <!--    <div class="container">-->
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+               <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>-->
+                <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Logo"/>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left" style="font-size:small;">
+                    <li>
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#welcome">About Us</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#services">Tools & Technologies</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#team-section">Our Team</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 <body>
-    <div class="landIntro">
-        <div class="content">
-            <section class="os-animation" data-os-animation="bounceInIp"
-                     data-os-animation-delay="0s">
-                <h1>Deakin University</h1>
-                <h3>Park Easy</h3>
-            </section>
+    <!--Home-->
+    <header id="home" class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="caption">
+                                    <div class="header-text text-center">
+                                        <h1 class="animated fadeInLeftBig">Park Easy</h1>
+                                        <p class="animated fadeInRightBig">Find a car park at your easiest</p>
+                                        <a href="#welcome" class="page-scroll ank animated fadeInUpBig">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="caption">
+                                    <div class="header-text text-center">
+                                        <h1 class="animated fadeInDownBig">Deakin University</h1>
+                                        <p class="animated fadeInUpBig">SIT 737/780 project</p>
+                                        <a href="#welcome" class="page-scroll ank animated fadeInUpBig">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </div>
+                        <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                        <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+                    </div>
+    
+                </div>
+            </div>
         </div>
+    </header>
+    <!--About Us-->
+    <section id="welcome" class="section-padding welcome">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h2><i class="fa fa-laptop" aria-hidden="true"></i> List View Of Available locations</h2>
+                            <p>This application will provide you with the list of available nearby location to park.</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h2><i class="fa fa-rocket" aria-hidden="true"></i> Map View of available locations</h2>
+                            <p> This application will provide you with the Map View of available nearby location to park and you can navigate from your current location to the available parking.<br></p>
+                        </div>
+                        <div class="col-md-4">
+                            <h2><i class="fa fa-camera" aria-hidden="true"></i> In APP Settings</h2>
+                            <p>This application will provide you with bunch of settings to play around.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Tech Stack-->
+    <section id="services" class="section-padding features">
+        <div class="container">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2> <span> Tech Stack </span> </h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <h3>Web Development<br/></h3>
+                    <div class="col-md-6">
+                        <h4>Bootstrap</h4>
+                        <div class="col-md-3"><img class="img-thumbnail" src="images/bootstrap.png"
+                                               alt="bootstrap image" width="65" height="50"></div>
+                         <div class="col-md-4">
+                        <a class="btn3 m-b80" href="https://getbootstrap.com/" target="_blank">More Info</a>
+                         </div>
+                    </div>
+                     <div class="col-md-6">
+                        <h4>Javascript</h4>
+                         <div class="col-md-3"><img class="img-thumbnail" src="images/javascript.png"
+                                               alt="sample image" width="65" height="50"></div>
+                          <div class="col-md-4">
+                        <a class="btn3 m-b80" href="https://www.javascript.com/" target="_blank">More Info</a>
+                          </div>
+                     </div>
+                     <div class="col-md-6">
+                        <h4>Materialize</h4>
+                         <div class="col-md-3"><img class="img-thumbnail" src="images/materialize.png"
+                                               alt="sample image" width="65" height="50"></div>
+                          <div class="col-md-4">
+                        <a class="btn3 m-b80" href="https://materializecss.com/" target="_blank">More Info</a>
+                          </div>
+                     </div>
+                     <div class="col-md-6">
+                        <h4>Node JS</h4>
+                         <div class="col-md-3"><img class="img-thumbnail" src="images/nodejs.png"
+                                               alt="sample image" width="65" height="50"></div>
+                          <div class="col-md-4">
+                        <a class="btn3 m-b80" href="https://nodejs.org/en/" target="_blank">More Info</a>
+                          </div>
+                     </div>
+                     <div class="col-md-6">
+                        <h4>IBM Cloud</h4>
+                         <div class="col-md-3"><img class="img-thumbnail" src="images/ibm.png"
+                                               alt="sample image" width="65" height="50"></div>
+                          <div class="col-md-4">
+                        <a class="btn3 m-b80" href="https://www.ibm.com/au-en" target="_blank">More Info</a>
+                          </div>
+                     </div>
+                     <div class="col-md-6">
+                        <h4>Docker</h4>
+                         <div class="col-md-3"><img class="img-thumbnail" src="images/docker.png"
+                                               alt="sample image" width="65" height="50"></div>
+                          <div class="col-md-4">
+                        <a class="btn3 m-b80" href="https://www.docker.com/" target="_blank">More Info</a>
+                          </div>
+                     </div>
+                     <div class="col-md-6">
+                        <h4>Map Box</h4>
+                         <div class="col-md-3"><img class="img-thumbnail" src="images/mapbox.png"
+                                               alt="sample image" width="65" height="50"></div>
+                          <div class="col-md-4">
+                        <a class="btn3 m-b80" href="https://www.mapbox.com/" target="_blank">More Info</a>
+                          </div>
+                     </div>
+                     <div class="col-md-6">
+                        <h4>Mongo DB</h4>
+                         <div class="col-md-3"><img class="img-thumbnail" src="images/mongodb.png"
+                                               alt="sample image" width="65" height="50"></div>
+                          <div class="col-md-4">
+                        <a class="btn3 m-b80" href="https://www.mongodb.com/" target="_blank">More Info</a>
+                          </div>
+                     </div>
+                </div>
+        </div>
+    </section>
+    <!--Our Team-->
+    <section id="Trello" class="section-padding team-box">
+        <!--{% if scroll %}-->
+            <script>
+                document.location.hash = '#' + '{{ scroll }}';
+            </script>
+            <!--{% endif %}-->
+    
+              <!-- START BLOG SECTION -->
+            <section id="team-section" class="section-padding blog">
+                <div class="title">
+                    <h2>OUR <span>TEAM</span></h2>
+                </div>
+    
+            </section>
+    
+    </section>
+</body>
+
+<footer class="footer-distributed">
+    <div class="footer-center>
+
+        <p class="footer-company-name">© 2021 Park Easy</p>
     </div>
 
-<div class="footer">
-    <p>© 2021 Park Easy</p>
-</div>
+    <div class="footer-center">
+        <div>
+            <i class="fa fa-map-marker"></i>&nbsp;<span> </span>
+
+        </div>
+        <div>
+                <i class="fa fa-phone"></i>&nbsp;<span> (00) 1234 5678</span>
 
 
-
-</body>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>&nbsp;<a href="mailto:support@parkeasy.com">support@parkeasy.com</a>
+            </div>
+        </div>
+            </div>
+        </div>
+    </footer>
 
 </html>
